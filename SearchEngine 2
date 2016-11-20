@@ -1,0 +1,15 @@
+public with sharing class searchctrl2 
+{
+    public String seacrhtext{get; set;}
+    public list <Logistic__c> studentlist{get; set;} 
+	public searchctrl2()
+    {
+        studentlist = new list <Logistic__c>();
+    }
+    public void searchresult()
+    {
+        String Query = 'select Assessment_Officers__c, Customer_Company__c  from Logistic__c where Customer_Company__c '+'like\''+seacrhtext+'%'+'\'';
+        System.debug('*****query= '+Query);
+        studentlist = Database.query(Query);        
+    }
+}
