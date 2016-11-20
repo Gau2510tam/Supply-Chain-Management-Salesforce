@@ -1,0 +1,15 @@
+public with sharing class searchctrl 
+{
+    public String seacrhtext{get; set;}
+    public list <Mapping__c> studentlist{get; set;} 
+	public searchctrl()
+    {
+        studentlist = new list <Mapping__c>();
+    }
+    public void searchresult()
+    {
+        String Query = 'select Location__c, Cities__c  from Mapping__c where Location__c '+'like\''+seacrhtext+'%'+'\'';
+        System.debug('*****query= '+Query);
+        studentlist = Database.query(Query);        
+    }
+}
