@@ -1,0 +1,20 @@
+<apex:page sidebar="true" controller="searchctrl">
+    <apex:form >
+   		<apex:pageblock >
+        	<apex:pageBlockSection title="Place">
+            	<apex:outputLabel >
+                	Place Name :
+                </apex:outputLabel>
+                <apex:inputText value="{!seacrhtext}">
+                    <apex:actionSupport event="onkeyup" action="{!searchresult}" reRender="panel1" />
+                </apex:inputText>
+                <apex:outputPanel id="panel1"> 
+                	<apex:pageBlockTable value="{!studentlist}" var="std">
+                        <apex:column value="{!std.Location__c}" />
+                        <apex:column value="{!std.Cities__c}" />
+                    </apex:pageBlockTable>
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+        </apex:pageblock> 	
+    </apex:form>
+</apex:page>
